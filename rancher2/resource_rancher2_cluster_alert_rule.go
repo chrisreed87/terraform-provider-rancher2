@@ -95,6 +95,7 @@ func resourceRancher2ClusterAlertRuleUpdate(d *schema.ResourceData, meta interfa
 	inherited := d.Get("inherited").(bool)
 	update := map[string]interface{}{
 		"clusterId":             d.Get("cluster_id").(string),
+		"state":                 d.Get("state").(string),
 		"groupId":               d.Get("group_id").(string),
 		"groupIntervalSeconds":  int64(d.Get("group_interval_seconds").(int)),
 		"groupWaitSeconds":      int64(d.Get("group_wait_seconds").(int)),

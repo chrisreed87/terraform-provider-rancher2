@@ -18,6 +18,7 @@ func flattenClusterAlertRule(d *schema.ResourceData, in *managementClient.Cluste
 
 	d.Set("name", in.Name)
 	d.Set("cluster_id", in.ClusterID)
+	d.Set("state", in.AlertState)
 
 	if in.EventRule != nil {
 		err := d.Set("event_rule", flattenEventRule(in.EventRule))

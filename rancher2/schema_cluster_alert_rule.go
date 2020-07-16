@@ -13,6 +13,12 @@ func clusterAlertRuleFields() map[string]*schema.Schema {
 			Required:    true,
 			Description: "Alert rule cluster ID",
 		},
+		"state": {
+			Type:        schema.TypeString,
+			Required:    false,
+			Default:     "active",
+			Description: "Alert rule state",
+		},
 		"event_rule": {
 			Type:          schema.TypeList,
 			MaxItems:      1,
