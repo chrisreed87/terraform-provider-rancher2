@@ -18,7 +18,6 @@ func flattenClusterAlertRule(d *schema.ResourceData, in *managementClient.Cluste
 
 	d.Set("name", in.Name)
 	d.Set("cluster_id", in.ClusterID)
-	d.Set("state", in.AlertState)
 
 	if in.EventRule != nil {
 		err := d.Set("event_rule", flattenEventRule(in.EventRule))
@@ -53,6 +52,10 @@ func flattenClusterAlertRule(d *schema.ResourceData, in *managementClient.Cluste
 
 	if len(in.Severity) > 0 {
 		d.Set("severity", in.Severity)
+	}
+	
+	if len(in.AlertState) > 0 {
+		d.Set("alert_state", in.AlertState)
 	}
 
 	if in.SystemServiceRule != nil {
@@ -113,6 +116,10 @@ func expandClusterAlertRule(in *schema.ResourceData) *managementClient.ClusterAl
 
 	if v, ok := in.Get("severity").(string); ok {
 		obj.Severity = v
+	}
+
+	if v, ok := in.Get("alert_state").(string); ok {
+		obj.AlertState = v
 	}
 
 	if v, ok := in.Get("system_service_rule").([]interface{}); ok && len(v) > 0 {

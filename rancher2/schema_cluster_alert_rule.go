@@ -13,10 +13,9 @@ func clusterAlertRuleFields() map[string]*schema.Schema {
 			Required:    true,
 			Description: "Alert rule cluster ID",
 		},
-		"state": {
+		"alert_state": {
 			Type:        schema.TypeString,
-			Required:    false,
-			Default:     "active",
+			Optional:    true,
 			Description: "Alert rule state",
 		},
 		"event_rule": {
